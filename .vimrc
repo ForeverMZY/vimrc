@@ -394,4 +394,4 @@ call plug#begin()
     Plug 'jiangmiao/auto-pairs'
 call plug#end()
 
-imap kj <esc>
+map kj <esc>
