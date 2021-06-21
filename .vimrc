@@ -388,10 +388,20 @@ set cursorline
 set wrap
 set showcmd
 set wildmenu
+set autoindent
+set noexpandtab
+set tabstop=4
+set shiftwidth=4
 
 call plug#begin()
     Plug 'scrooloose/nerdtree'
     Plug 'jiangmiao/auto-pairs'
+    Plug 'joshdick/onedark.vim'
+    Plug 'octol/vim-cpp-enhanced-highlight'
+    Plug 'elzr/vim-json'
 call plug#end()
+
+colorscheme onedark
+let g:cpp_class_scope_highlight = 1
 
 imap kj <esc>
