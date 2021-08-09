@@ -392,6 +392,9 @@ set autoindent
 set noexpandtab
 set tabstop=4
 set shiftwidth=4
+set incsearch
+set hlsearch
+set mouse=a
 
 call plug#begin()
     Plug 'scrooloose/nerdtree'
@@ -399,9 +402,27 @@ call plug#begin()
     Plug 'joshdick/onedark.vim'
     Plug 'octol/vim-cpp-enhanced-highlight'
     Plug 'elzr/vim-json'
+    Plug 'rip-rip/clang_complete'
+    Plug 'dyng/ctrlsf.vim'
+    Plug 'sheerun/vim-polyglot'
+    Plug 'fatih/vim-go'
+    Plug 'dyng/ctrlsf.vim'
+    Plug 'klen/python-mode'
+    Plug 'davidhalter/jedi-vim'
+    Plug 'nathanaelkane/vim-indent-guides'
 call plug#end()
 
 colorscheme onedark
+
 let g:cpp_class_scope_highlight = 1
+let g:clang_library_path='/usr/lib/x86_64-linux-gnu/libclang-10.so.1'
+
+let g:AutoPairsMapCR = 0
+imap <silent><CR> <CR><Plug>AutoPairsReturn
+
+au VimEnter *  NERDTree
+
+set splitbelow
+set termsize=10x0
 
 imap kj <esc>
