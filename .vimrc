@@ -412,7 +412,7 @@ call plug#begin()
     Plug 'nathanaelkane/vim-indent-guides'
 call plug#end()
 
-colorscheme onedark
+silent! colorscheme onedark
 
 let g:cpp_class_scope_highlight = 1
 let g:clang_library_path='/usr/lib/x86_64-linux-gnu/libclang-10.so.1'
