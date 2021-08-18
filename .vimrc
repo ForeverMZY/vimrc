@@ -410,12 +410,16 @@ call plug#begin()
     Plug 'klen/python-mode'
     Plug 'davidhalter/jedi-vim'
     Plug 'nathanaelkane/vim-indent-guides'
+    Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
+    Plug 'vim-airline/vim-airline'
+    Plug 'tpope/vim-fugitive'
+    Plug 'valloric/youcompleteme'
 call plug#end()
 
 colorscheme onedark
 
 let g:cpp_class_scope_highlight = 1
-let g:clang_library_path='/usr/lib/x86_64-linux-gnu/libclang-10.so.1'
+let g:clang_library_path='/home/mzy/bin/llvm/lib/libclang.so'
 
 let g:AutoPairsMapCR = 0
 imap <silent><CR> <CR><Plug>AutoPairsReturn
@@ -423,6 +427,11 @@ imap <silent><CR> <CR><Plug>AutoPairsReturn
 au VimEnter *  NERDTree
 
 set splitbelow
-set termsize=10x0
+
+let g:LanguageClient_serverCommands = { 'cpp': ['clangd'], }
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gr :call LanguageClient#textDocument_references()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 imap kj <esc>
