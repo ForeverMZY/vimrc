@@ -402,7 +402,6 @@ call plug#begin()
     Plug 'joshdick/onedark.vim'
     Plug 'octol/vim-cpp-enhanced-highlight'
     Plug 'elzr/vim-json'
-    Plug 'rip-rip/clang_complete'
     Plug 'dyng/ctrlsf.vim'
     Plug 'sheerun/vim-polyglot'
     Plug 'fatih/vim-go'
@@ -419,7 +418,6 @@ call plug#end()
 colorscheme onedark
 
 let g:cpp_class_scope_highlight = 1
-let g:clang_library_path='/home/mzy/bin/llvm/lib/libclang.so'
 
 let g:AutoPairsMapCR = 0
 imap <silent><CR> <CR><Plug>AutoPairsReturn
@@ -433,5 +431,11 @@ nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gr :call LanguageClient#textDocument_references()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+let g:ycm_semantic_triggers = { 'c': ['->', '.'], 'objc': ['->', '.', 're!\[[_a-zA-Z]+\w*\s', 're!^\s*[^\W\d]\w*\s', 're!\[.*\]\s'], 'ocaml': ['.', '#'], 'cpp,cuda,objcpp': ['->', '.', '::'], 'perl': ['->'], 'php': ['->', '::'], 'cs,d,elixir,go,groovy,java,javascript,julia,perl6,python,scala,typescript,vb': ['.'], 'ruby,rust': ['.', '::'], 'lua': ['.', ':'], 'erlang': [':']}
+" Let clangd fully control code completion
+let g:ycm_clangd_uses_ycmd_caching = 0
+" Use installed clangd, not YCM-bundled clangd which doesn't get updates.
+let g:ycm_clangd_binary_path = exepath("clangd")
 
 imap kj <esc>
