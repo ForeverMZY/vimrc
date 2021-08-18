@@ -415,7 +415,7 @@ call plug#begin()
     Plug 'valloric/youcompleteme'
 call plug#end()
 
-colorscheme onedark
+silent! colorscheme onedark
 
 let g:cpp_class_scope_highlight = 1
 
