@@ -189,7 +189,7 @@ set tw=500
 
 set ai "Auto indent
 set si "Smart indent
-set wrap "Wrap lines
+set nowrap "Wrap lines
 
 
 """"""""""""""""""""""""""""""
@@ -385,7 +385,7 @@ endfunction
 set number
 set norelativenumber
 set cursorline
-set wrap
+set nowrap
 set showcmd
 set wildmenu
 set autoindent
@@ -415,6 +415,8 @@ call plug#begin()
     Plug 'valloric/youcompleteme'
     Plug 'junegunn/fzf', { 'do': { -> fzf#install()   }   }
     Plug 'junegunn/fzf.vim'
+    Plug 'ojroques/vim-oscyank'
+    Plug 'thaerkh/vim-workspace'
 call plug#end()
 
 silent! colorscheme onedark
@@ -424,11 +426,14 @@ let g:cpp_class_scope_highlight = 1
 let g:AutoPairsMapCR = 0
 imap <silent><CR> <CR><Plug>AutoPairsReturn
 
-au VimEnter *  NERDTree
+" au VimEnter *  NERDTree
 
 set splitbelow
 
-let g:LanguageClient_serverCommands = { 'cpp': ['clangd'], }
+let g:workspace_autosave_always = 0
+let g:workspace_autocreate = 0
+
+let g:LanguageClient_serverCommands = { 'cpp': ['clangd'], 'c': ['clangd'], 'python': ['pyls'], 'go': ['gopls']}
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gr :call LanguageClient#textDocument_references()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
@@ -441,3 +446,4 @@ let g:ycm_clangd_uses_ycmd_caching = 0
 let g:ycm_clangd_binary_path = exepath("clangd")
 
 imap kj <esc>
+vnoremap <C-c> :OSCYank<CR>
