@@ -413,6 +413,8 @@ call plug#begin()
     Plug 'vim-airline/vim-airline'
     Plug 'tpope/vim-fugitive'
     Plug 'valloric/youcompleteme'
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install()   }   }
+    Plug 'junegunn/fzf.vim'
 call plug#end()
 
 silent! colorscheme onedark
