@@ -417,6 +417,7 @@ call plug#begin()
     Plug 'junegunn/fzf.vim'
     Plug 'ojroques/vim-oscyank'
     Plug 'thaerkh/vim-workspace'
+    Plug 'zivyangll/git-blame.vim'
 call plug#end()
 
 silent! colorscheme onedark
@@ -444,6 +445,8 @@ let g:ycm_semantic_triggers = { 'c': ['->', '.'], 'objc': ['->', '.', 're!\[[_a-
 let g:ycm_clangd_uses_ycmd_caching = 0
 " Use installed clangd, not YCM-bundled clangd which doesn't get updates.
 let g:ycm_clangd_binary_path = exepath("clangd")
+
+nnoremap <Leader>s :<C-u>call gitblame#echo()<CR>
 
 imap kj <esc>
 vnoremap <C-c> :OSCYank<CR>
